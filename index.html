@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RimWorld</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div class="stars2"></div>
+<div class="earth"></div>
+
+<nav class="navbar">
+    <div class="nav-left">
+        <a href="#sobre">SOBRE</a>
+        <a href="#info">INFORMAÇÕES</a>
+        <a href="#galeria">MÍDIA</a>
+        <a href="#suporte">SUPORTE</a>
+    </div>
+
+    <div class="nav-right">
+        <a href="https://store.steampowered.com/app/294100/RimWorld/"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="btn-play">
+           JOGUE AGORA
+        </a>
+    </div>
+</nav>
+
+<header>
+    <h1 id="titulo">RimWorld</h1>
+    <p>Construa. Sobreviva. Evolua em um planeta desconhecido.</p>
+</header>
+
+<!--  BOTÃO -->
+<div class="btn-container">
+    <button class="btn-toggle" onclick="toggleSobre()">
+        Sobre o jogo
+    </button>
+</div>
+
+<!--  COMEÇA ESCONDIDO -->
+<section id="sobre" style="display: none;">
+    <h2>Sobre o Jogo</h2>
+
+    <div class="card">
+        <p style="text-align:center; max-width:700px; margin:auto;">
+            RimWorld é um simulador de colônia baseado em inteligência artificial narrativa.
+            Controle sobreviventes em um planeta desconhecido, enfrente eventos aleatórios,
+            construa sua base e tome decisões que impactam diretamente a história do jogo.
+        </p>
+    </div>
+</section>
+
+<section id="galeria">
+    <h2>Galeria</h2>
+
+    <div class="carousel">
+        <button class="arrow left">&#10094;</button>
+
+        <div class="carousel-track">
+            <img src="img/img1.png">
+            <img src="img/img2.png">
+            <img src="img/img4.png">
+            <img src="img/img5.png">
+        </div>
+
+        <button class="arrow right">&#10095;</button>
+    </div>
+</section>
+
+<section id="trailer">
+    <h2>Trailer</h2>
+    <div class="trailer">
+        <iframe src="https://www.youtube.com/embed/3tDrxOASUog" allowfullscreen></iframe>
+    </div>
+</section>
+
+<section id="info">
+    <h2>Informações Técnicas</h2>
+
+    <div class="info-grid">
+        <div class="info-item"><span>Plataforma</span><strong>PC</strong></div>
+        <div class="info-item"><span>Gênero</span><strong>Simulação / Estratégia</strong></div>
+        <div class="info-item"><span>Desenvolvedor</span><strong>Ludeon Studios</strong></div>
+        <div class="info-item"><span>Data de lançamento</span><strong>17/out/2018</strong></div>
+    </div>
+</section>
+
+<section id="features">
+    <h2>Destaques do Jogo</h2>
+    <ul>
+        <li>Sistema avançado de sobrevivência</li>
+        <li>Eventos aleatórios dinâmicos</li>
+        <li>Construção livre de colônias</li>
+        <li>IA com comportamento realista</li>
+        <li>Exploração de novos planetas</li>
+    </ul>
+</section>
+
+<section>
+    <a href="https://store.steampowered.com/app/294100/RimWorld/"
+       target="_blank"
+       rel="noopener noreferrer"
+       class="steam-btn">
+        <img src="img/Steam_icon_transpatrente.png">
+        Baixar na Steam
+    </a>
+</section>
+
+<section>
+    <h2>Sobre o Projeto</h2>
+    <p style="text-align:center; max-width:700px; margin:auto;">
+        Este site foi desenvolvido como projeto de portfólio utilizando HTML, CSS,
+        com foco em interface moderna, responsividade e experiência do usuário.
+    </p>
+</section>
+
+<section id="suporte">
+    <h2>Suporte</h2>
+
+    <form class="form-suporte">
+        <input type="text" placeholder="Seu nome" required>
+        <input type="email" placeholder="Seu email" required>
+        <textarea placeholder="Descreva seu problema..." required></textarea>
+        
+        <button type="submit">Enviar</button>
+    </form>
+
+    <p style="text-align:center; color:#58a6ff; margin-top:10px;">
+     thegame@rimworld.com<br>
+    ⏱ Resposta em até 24h
+    </p>
+</section>
+
+<button id="topoBtn">↑</button>
+
+<footer>
+    <p>Pedro & Pablo</p>
+    <p>Obrigado por visitar nosso portfólio 🚀</p>
+</footer>
+
+<script>
+
+// ===== BOTÃO SOBRE =====
+function toggleSobre() {
+    const sobre = document.getElementById('sobre');
+    const botao = document.querySelector('.btn-toggle');
+
+    if (sobre.style.display === "none") {
+        sobre.style.display = "block";
+        botao.innerText = "Ocultar";
+    } else {
+        sobre.style.display = "none";
+        botao.innerText = "Sobre o jogo";
+    }
+}
+
+// ===== CARROSSEL =====
+const track = document.querySelector(".carousel-track");
+const slides = document.querySelectorAll(".carousel-track img");
+const next = document.querySelector(".arrow.right");
+const prev = document.querySelector(".arrow.left");
+
+let index = 0;
+
+function moverCarousel() {
+    track.style.transform = "translateX(-" + (index * 100) + "%)";
+}
+
+next.addEventListener("click", () => {
+    index++;
+    if (index >= slides.length) index = 0;
+    moverCarousel();
+});
+
+prev.addEventListener("click", () => {
+    index--;
+    if (index < 0) index = slides.length - 1;
+    moverCarousel();
+});
+
+setInterval(() => {
+    index++;
+    if (index >= slides.length) index = 0;
+    moverCarousel();
+}, 3000);
+
+// ===== FORMULÁRIO =====
+const form = document.querySelector(".form-suporte");
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    alert("Mensagem enviada com sucesso! 🚀");
+    form.reset();
+});
+
+// ===== TÍTULO =====
+const titulo = document.getElementById("titulo");
+
+titulo.addEventListener("click", () => {
+    titulo.innerText = "Bem-vindo ao RimWorld 🚀";
+});
+
+// ===== BOTÃO TOPO =====
+const topoBtn = document.getElementById("topoBtn");
+
+window.addEventListener("scroll", () => {
+    topoBtn.style.display = window.scrollY > 300 ? "block" : "none";
+});
+
+topoBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+</script>
+
+</body>
+</html>

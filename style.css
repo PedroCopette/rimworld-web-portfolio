@@ -1,0 +1,581 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    font-family: Arial;
+    color: white;
+    background: black;
+    overflow-x: hidden;
+}
+
+/* ================= FUNDO ================= */
+.stars, .stars2 {
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: url("https://www.transparenttextures.com/patterns/stardust.png");
+}
+
+.stars {
+    animation: moveStars 160s linear infinite;
+    opacity: 0.6;
+    z-index: -3;
+}
+
+.stars2 {
+    animation: moveStars 100s linear infinite;
+    opacity: 0.3;
+    z-index: -2;
+}
+
+@keyframes moveStars {
+    from { transform: translate(0,0); }
+    to { transform: translate(-300px,150px); }
+}
+
+/* ================= TERRA ================= */
+.earth {
+    position: fixed;
+    bottom: -120px;
+    right: -120px;
+    width: 420px;
+    height: 420px;
+    background: url("https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg");
+    background-size: cover;
+    border-radius: 50%;
+    opacity: 0.25;
+
+    box-shadow:
+        inset -80px -80px 120px rgba(0,0,0,0.8),
+        0 0 40px rgba(88,166,255,0.3);
+
+    animation: rotate 150s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0); }
+    to { transform: rotate(360deg); }
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 60px;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(12px);
+}
+
+.nav-left a {
+    margin-right: 25px;
+    color: #ccc;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.nav-left a:hover {
+    color: #58a6ff;
+}
+
+/* BOTÃO */
+.btn-play {
+    padding: 14px 30px;
+    border-radius: 10px;
+    background: linear-gradient(45deg,#58a6ff,#0077ff);
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-play:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 20px #58a6ff;
+}
+
+/* ================= HEADER ================= */
+header {
+    text-align: center;
+    padding: 80px 20px 40px;
+    position: relative;
+}
+
+header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent, black);
+}
+
+/* TITULO */
+h1 {
+    font-family: 'Orbitron';
+    font-size: 80px;
+    letter-spacing: 4px;
+
+    background: linear-gradient(90deg, #ffffff, #58a6ff, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 0 10px rgba(88,166,255,0.8),
+        0 0 30px rgba(88,166,255,0.6),
+        0 0 60px rgba(88,166,255,0.4);
+
+    animation: glowPulse 3s infinite ease-in-out;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        text-shadow:
+            0 0 10px rgba(88,166,255,0.8),
+            0 0 30px rgba(88,166,255,0.6);
+    }
+    50% {
+        text-shadow:
+            0 0 20px rgba(88,166,255,1),
+            0 0 60px rgba(88,166,255,0.9);
+    }
+}
+
+/* SUBTITULO */
+header p {
+    font-size: 18px;
+    color: #aaa;
+    margin-top: 15px;
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+/* ANIMAÇÃO */
+header h1,
+header p {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 1s ease forwards;
+}
+
+header p {
+    animation-delay: 0.3s;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================= SECTION ================= */
+section {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 10px 20px;
+}
+
+/* TITULOS */
+section h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+    text-shadow: 0 0 10px #58a6ff, 0 0 20px rgba(88,166,255,0.4);
+}
+
+/* ================= TRAILER ================= */
+.trailer {
+    display: flex;
+    justify-content: center;
+}
+
+.trailer iframe {
+    width: 620px;
+    height: 315px;
+}
+
+/* ================= CARROSSEL ================= */
+.carousel {
+    position: relative;
+    width: 700px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel img {
+    width: 100%;
+    flex-shrink: 0;
+    border-radius: 12px;
+}
+
+/* SETAS */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 40px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.arrow.left {
+    left: -40px;
+}
+
+.arrow.right {
+    right: -40px;
+}
+
+.arrow:hover {
+    color: #58a6ff;
+    transform: translateY(-50%) scale(1.2);
+}
+
+/* ================= INFO GRID ================= */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.info-item {
+    padding: 18px 20px;
+    border-radius: 14px;
+    background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    border: 1px solid rgba(88,166,255,0.2);
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+.info-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px rgba(88,166,255,0.3);
+}
+
+.info-item span {
+    font-size: 12px;
+    color: #58a6ff;
+}
+
+.info-item strong {
+    font-size: 20px;
+}
+
+/* ================= LISTA ================= */
+section ul {
+    list-style: none;
+    padding: 0;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+section ul li {
+    padding: 14px 0;
+    color: #ccc;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* ================= STEAM ================= */
+.steam-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    color: #66c0f4;
+    text-decoration: none;
+    width: 260px;
+    margin: auto;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.steam-btn img {
+    width: 32px;
+}
+
+.steam-btn:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 10px #66c0f4;
+}
+
+/* ================= FOOTER ================= */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #aaa;
+}
+
+/* RESPONSIVIDADE PRINCIPAL */
+@media (max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+
+    .nav-left {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-left a {
+        margin: 5px 10px;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    .carousel {
+        width: 95%;
+    }
+
+    .trailer iframe {
+        width: 100%;
+        height: 200px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .earth {
+        width: 250px;
+        height: 250px;
+    }
+
+    .arrow.left {
+        left: 5px;
+    }
+
+    .arrow.right {
+        right: 5px;
+    }
+}
+/* ================= MELHORIAS (ADICIONADAS) ================= */
+
+/* NAVBAR FIXA */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* BOTÃO MAIS FORTE */
+.btn-play:hover {
+    transform: scale(1.12);
+    box-shadow: 0 0 30px #58a6ff;
+}
+
+/* HOVER NAS IMAGENS */
+.carousel img {
+    transition: 0.4s;
+}
+
+.carousel img:hover {
+    transform: scale(1.08);
+    filter: brightness(1.2);
+}
+
+/* MELHORIA NOS CARDS */
+.info-item:hover {
+    transform: translateY(-10px) scale(1.03);
+    box-shadow: 0 0 25px rgba(88,166,255,0.4);
+}
+
+/* LISTA INTERATIVA */
+section ul li {
+    transition: 0.3s;
+}
+
+section ul li:hover {
+    color: #58a6ff;
+    padding-left: 10px;
+}
+
+/* TITULO INTERATIVO */
+h1 {
+    transition: 0.3s;
+}
+
+h1:hover {
+    transform: scale(1.05);
+}
+
+/* ANIMAÇÃO NAS SECTIONS (SEM JS) */
+section {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: aparecer 1s ease forwards;
+}
+
+section:nth-of-type(1) { animation-delay: 0.2s; }
+section:nth-of-type(2) { animation-delay: 0.4s; }
+section:nth-of-type(3) { animation-delay: 0.6s; }
+section:nth-of-type(4) { animation-delay: 0.8s; }
+section:nth-of-type(5) { animation-delay: 1s; }
+
+@keyframes aparecer {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================= SUPORTE ================= */
+
+.form-suporte {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.form-suporte input,
+.form-suporte textarea {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background: rgba(255,255,255,0.05);
+    color: white;
+}
+
+.form-suporte textarea {
+    resize: none;
+    height: 100px;
+}
+
+.form-suporte button {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background: #58a6ff;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.form-suporte button:hover {
+    background: #0077ff;
+    box-shadow: 0 0 15px #58a6ff;
+}
+/* ADICIONADO */
+body {
+    background: radial-gradient(circle at top, #020617, black);
+}
+
+/* CARD SOBRE */
+.card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(88,166,255,0.2);
+    border-radius: 12px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+}
+
+/* BOTÃO COM BRILHO */
+.btn-play {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-play::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+    top: 0;
+    left: -100%;
+    transition: 0.5s;
+}
+
+.btn-play:hover::after {
+    left: 100%;
+}
+
+/* BORDA + GLOW NAS IMAGENS */
+.carousel img {
+    border: 1px solid rgba(88,166,255,0.2);
+}
+
+.carousel img:hover {
+    box-shadow: 0 0 20px rgba(88,166,255,0.4);
+}
+
+/* SEPARADOR ENTRE SEÇÕES */
+section {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* SCROLL PERSONALIZADO */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #58a6ff;
+    border-radius: 10px;
+}
+
+/* INPUT FOCUS */
+.form-suporte input:focus,
+.form-suporte textarea:focus {
+    border: 1px solid #58a6ff;
+    box-shadow: 0 0 10px #58a6ff;
+}
+
+#topoBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    padding: 10px 15px;
+    font-size: 20px;
+    background: #58a6ff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: none;
+}
+.btn-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.btn-toggle {
+    padding: 12px 25px;
+    background: linear-gradient(45deg, #00bcd4, #2196f3);
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 188, 212, 0.7);
+}
